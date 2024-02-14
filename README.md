@@ -46,7 +46,7 @@ Inside theHarvester folder, do
 ```
 python3 -m pip install -r requirements/base.txt
 ```
-back to home directory, do
+Back to home directory to make shortcut, do
 ```
 ln -s /data/data/com.termux/files/home/theHarvester/theharvester,py
 ```
