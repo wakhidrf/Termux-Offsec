@@ -99,3 +99,15 @@ Run BeEF, do
 ```
 bash ./beef
 ```
+
+## Ngrok
+You need to sign up first at [ngrok]( https://ngrok.com/), then
+```
+git clone https://github.com/wakhidrf/Termux-Offsec.git
+cd Termux-Offsec/assets/
+tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
+```
+Then use your token
+```
+ngrok config add-authtoken <Your Token>
+```

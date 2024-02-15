@@ -68,6 +68,14 @@ cd beef/
 bundle install
 cd
 
+echo "================================================="
+echo "Installing Ngrok"
+echo "================================================="
+
+cd Termux-Offsec/assets/
+tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
+cd
+
 echo "=================================================="
 echo "OneScriptSetup Complete"
 echo "=================================================="
