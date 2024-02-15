@@ -36,11 +36,10 @@ pkg update && pkg install python-lxml -y
 ```
 Install pycares, do
 ```
-mkdir builds
-cd builds/
-git clone https://github.com/saghul/pycares
-cd pycares/
-nano deps/c-ares/src/config_linux/ares_config.h
+wget https://files.pythonhosted.org/packages/01/50/e3015e6e03a3cf64113f509e8b86b71af37169b59ccedfcb182f3d031329/pycares-4.3.0.tar.gz
+tar -xf pycares-4.3.0.tar.gz
+sed -i s/'#define HAVE_GETSERVBYPORT_R 1'//g ./pycares-4.3.0/deps/build-config/config_android/ares_config.h
+pip install ./pycares-4.3.0
 ```
 Inside theHarvester folder, do
 ```
@@ -48,7 +47,7 @@ python3 -m pip install -r requirements/base.txt
 ```
 Back to home directory to make shortcut, do
 ```
-ln -s /data/data/com.termux/files/home/theHarvester/theharvester,py
+ln -s /data/data/com.termux/files/home/theHarvester/theHarvester.py
 ```
 Run theHarvester, do
 ```
