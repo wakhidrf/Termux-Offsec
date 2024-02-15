@@ -4,7 +4,7 @@ echo "================================================="
 echo "Installing Base Package"
 echo "================================================="
 
-pkg upgrade -y && pkg update && pkg install tur-repo rust ruby perl golang nodejs php python -y
+pkg upgrade -y && pkg update && pkg install tur-repo wget rust ruby perl golang nodejs php python -y
 
 echo "================================================="
 echo "Installing Net::SSLeay and lxml"
@@ -34,6 +34,9 @@ echo "=================================================="
 
 cd
 git clone https://github.com/scipag/vulscan.git
+cd ../usr/share/nmap/scripts/
+ln -s /data/data/com.termux/files/home/vulscan/vulscan.nse
+cd
 
 echo "=================================================="
 echo "Installing Metasploit"
@@ -56,6 +59,8 @@ cd
 git clone https://github.com/sullo/nikto.git
 cd
 ln -s /data/data/com.termux/files/home/nikto/program/nikto.pl
+cd Termux-Offsec/assets/
+cp nikto.conf.default ../../nikto/program/nikto.conf.default
 
 cd
 git clone https://github.com/beefproject/beef.git
@@ -66,4 +71,3 @@ cd
 echo "=================================================="
 echo "OneScriptSetup Complete"
 echo "=================================================="
-

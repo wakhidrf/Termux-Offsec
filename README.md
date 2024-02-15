@@ -2,6 +2,15 @@
 
 This repo contains some guide to install some useful tool for pentester on termux, tested on my android 14 aarch64 device non-rooted.
 
+## OneScriptSetup
+I made a script to easily install all tools, but make sure you have more than 4GB free space.
+```
+bash
+git clone https://github.com/wakhidrf/Termux-Offsec.git
+cd Termux-Offsec
+bash setup.sh
+```
+
 ## Nmap
 To install nmap just easily do
 ```
