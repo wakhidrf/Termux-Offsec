@@ -35,13 +35,13 @@ echo "=================================================="
 cd
 git clone https://github.com/scipag/vulscan.git
 cd ../usr/share/nmap/scripts/
-ln -s /data/data/com.termux/files/home/vulscan/vulscan.nse
-cd
+ln -s /data/data/com.termux/files/home/vulscan/
 
 echo "=================================================="
 echo "Installing Metasploit"
 echo "=================================================="
 
+cd
 source <(curl -fsSL https://kutt.it/msf)
 
 echo "=================================================="
@@ -66,15 +66,46 @@ cd
 git clone https://github.com/beefproject/beef.git
 cd beef/
 bundle install
-cd
 
 echo "================================================="
 echo "Installing Ngrok"
 echo "================================================="
 
+cd
 cd Termux-Offsec/assets/
 tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
+
+echo "================================================="
+echo "Installing Nuclei and Mosint"
+echo "================================================="
+
 cd
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+go install -v github.com/alpkeskin/mosint/v3/cmd/mosint@latest
+cd ../usr/bin/
+ln -s /data/data/com.termux/files/home/go/bin/nuclei
+ln -s /data/data/com.termux/files/home/ho/bin/mosint
+cd
+cd Termux-Offsec/assets/
+cp .mosint.yaml /data/data/com.termux/files/home/.mosint.yaml
+
+echo "=================================================="
+echo "Installing Anubis-Netsec"
+echo "=================================================="
+
+cd
+pip install anubis-netsec
+cd ../usr/lib/python3.11/site-packages/dns/
+rm -rf resolver.py
+cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
+
+echo "=================================================="
+echo "Installing RetireJS"
+echo "=================================================="
+
+cd
+npm install -g retire
+retire
 
 echo "=================================================="
 echo "OneScriptSetup Complete"
