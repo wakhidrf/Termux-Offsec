@@ -16,7 +16,7 @@ Run this
 ```
 pkg update && pkg install nmap -y
 ```
-**Optional** Adding vulscan.nse script
+> Adding vulscan.nse script
 ```
 cd
 git clone https://github.com/scipag/vulscan.git
@@ -94,7 +94,7 @@ To run nikto, do
 ```
 perl nikto.pl -h
 ```
-**Optional** adding ssl support
+> Adding ssl support
 ```
 cd
 git clone https://github.com/wakhidrf/Termux-Offsec.git
