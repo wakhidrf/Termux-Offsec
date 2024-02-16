@@ -97,7 +97,7 @@ perl nikto.pl -h
 **Optional** adding ssl support
 ```
 cd
-git clone https://github.com/scipag/vulscan.git
+git clone https://github.com/wakhidrf/Termux-Offsec.git
 cd Termux-Offsec/assets/
 cp nikto.conf.default ../../nikto/program/nikto.conf.default
 ```
