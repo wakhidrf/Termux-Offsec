@@ -38,7 +38,7 @@ bash
 source <(curl -fsSL https://kutt.it/msf)
 ```
 ### Aircrack-NG
-Run This
+Run this
 ```
 cd
 git clone https://github.com/wakhidrf/Termux-Offsec.git
@@ -56,6 +56,16 @@ tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
 Then use your token
 ```
 ngrok config add-authtoken <Your Token>
+```
+### John The Ripper
+Run this
+```
+cd
+cd Termux-Offsec/assets/
+cp jtr-installer.sh ../../jtr-installer.sh
+cd
+bash jtr-installer.sh
+rm -rf jtr-installer.sh
 ```
 ## Python Tools
 You need python, do
@@ -102,6 +112,14 @@ cd ../usr/lib/python3.11/site-packages/dns/
 rm -rf resolver.py
 cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
 ```
+### sqlMap
+Run This
+```
+cd
+git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+ln -s /data/data/com.termux/files/home/sqlmap-dev/sqlmap.py
+```
+
 ## Perl Tools
 You need perl, do
 ```
@@ -172,6 +190,14 @@ cd Termux-Offsec/assets/
 cp .mosint.yaml /data/data/com.termux/files/home/.mosint.yaml
 ```
 To set API, follow [alpkeskin](https://github.com/alpkeskin/mosint) guide
+### SmuggleFuzz
+Run this
+```
+cd
+go install github.com/moopinger/smugglefuzz@latest
+cd ../usr/bin/
+ln -s /data/data/com.termux/files/home/ho/bin/smugglefuzz
+```
 ## Nodejs Tools
 You need nodejs, do
 ```

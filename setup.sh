@@ -36,7 +36,7 @@ ln -s /data/data/com.termux/files/home/vulscan/
 clear
 echo "=================================================="
 echo "Installing Community Tools"
-echo "Metasploit Ngrok Aircrack-NG"
+echo "Metasploit Ngrok Aircrack-NG JohnTheRipper"
 echo "=================================================="
 
 cd
@@ -50,10 +50,17 @@ cd
 cd Termux-Offsec/assets/aircrack-ng/
 bash setup.sh
 
+cd
+cd Termux-Offsec/assets/
+cp jtr-installer.sh ../../jtr-installer.sh
+cd
+bash jtr-installer.sh
+rm -rf jtr-installer.sh
+
 clear
 echo "=================================================="
 echo "Installing Python Tools"
-echo "theHarvester Anubis-Netsec"
+echo "theHarvester Anubis-Netsec sqlMap"
 echo "=================================================="
 
 cd
@@ -68,6 +75,10 @@ pip install anubis-netsec
 cd ../usr/lib/python3.11/site-packages/dns/
 rm -rf resolver.py
 cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
+
+cd
+git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+ln -s /data/data/com.termux/files/home/sqlmap-dev/sqlmap.py
 
 clear
 echo "=================================================="
@@ -96,15 +107,17 @@ bundle install
 clear
 echo "================================================="
 echo "Installing Golang Tools"
-echo "Nuclei Mosint"
+echo "Nuclei Mosint SmuggleFuzz"
 echo "================================================="
 
 cd
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 go install -v github.com/alpkeskin/mosint/v3/cmd/mosint@latest
+go install github.com/moopinger/smugglefuzz@latest
 cd ../usr/bin/
 ln -s /data/data/com.termux/files/home/go/bin/nuclei
 ln -s /data/data/com.termux/files/home/ho/bin/mosint
+ln -s /data/data/com.termux/files/home/ho/bin/smugglefuzz
 cd
 cd Termux-Offsec/assets/
 cp .mosint.yaml /data/data/com.termux/files/home/.mosint.yaml
