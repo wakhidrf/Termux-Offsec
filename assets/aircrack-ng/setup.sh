@@ -1,6 +1,6 @@
 #! /bin/bash
 
-architecture=$(uname -r)
+architecture=$(uname -m)
 
 if [[ $architecture == *"aarch64"* ]]; then
 	dpkg -i aircrack-ng_3_1.7_aarch64.deb
