@@ -1,7 +1,5 @@
 # Termux-Offsec
-
 This repo contains some guide to install some useful tool for pentester on termux, tested on my android 14 aarch64 device non-rooted.
-
 ## OneScriptSetup
 I made a script to easily install all tools, but make sure you have more than 7GB free space.
 ```
@@ -10,8 +8,12 @@ git clone https://github.com/wakhidrf/Termux-Offsec.git
 cd Termux-Offsec
 bash setup.sh
 ```
-
-## Nmap
+## Repo Tools
+You need termux user repository repo, do
+```
+pkg update && pkg install tur-repo -y
+```
+### Nmap
 Run this
 ```
 pkg update && pkg install nmap -y
@@ -23,30 +25,45 @@ git clone https://github.com/scipag/vulscan.git
 cd ../usr/share/nmap/scripts/
 ln -s /data/data/com.termux/files/home/vulscan/
 ```
-
-## THC-Hydra
-You need termux user repository repo to install hydra, do
-```
-pkg update && pkg install tur-repo -y
-```
-Then run this
+### THC-Hydra
+Run this
 ```
 pkg update && pkg install thc-hydra -y
 ```
-
-## Metasploit
+## Community Tools
+### Metasploit
 [guzhmazuko](https://github.com/gushmazuko/metasploit_in_termux) made an easy installation of metasplot on termux, do
 ```
 bash
 source <(curl -fsSL https://kutt.it/msf)
 ```
-
-## theHarvester
-You need python to install theHarvester, do
+### Aircrack-NG
+Run This
+```
+cd
+git clone https://github.com/wakhidrf/Termux-Offsec.git
+cd Termux-Offsec/assets/aircrack-ng/
+bash setup.sh
+```
+### Ngrok
+To install ngrok, you need to sign up at [ngrok]( https://ngrok.com/), then run this
+```
+cd
+git clone https://github.com/wakhidrf/Termux-Offsec.git
+cd Termux-Offsec/assets/
+tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
+```
+Then use your token
+```
+ngrok config add-authtoken <Your Token>
+```
+## Python Tools
+You need python, do
 ```
 pkg update && pkg install python -y
 ```
-Then clone this repo
+### theHarvester
+Clone this repo
 ```
 git clone https://github.com/laramies/theHarvester.git
 ```
@@ -75,13 +92,23 @@ To run theHarvester, do
 python3 theharvester.py -h
 ```
 To set API, follow [laramies](https://github.com/laramies/theHarvester/wiki/Installation#api-keys) guide
-
-## Nikto
-You need perl to install nikto, do
+### Anubis-Netsec
+Run this
+```
+cd
+pip install anubis-netsec
+git clone https://github.com/wakhidrf/Termux-Offsec.git
+cd ../usr/lib/python3.11/site-packages/dns/
+rm -rf resolver.py
+cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
+```
+## Perl Tools
+You need perl, do
 ```
 pkg update && pkg install perl -y
 ```
-Then clone this repo
+### Nikto
+Clone this repo
 ```
 git clone https://github.com/sullo/nikto.git
 ```
@@ -101,13 +128,13 @@ git clone https://github.com/wakhidrf/Termux-Offsec.git
 cd Termux-Offsec/assets/
 cp nikto.conf.default ../../nikto/program/nikto.conf.default
 ```
-
-## BeEF
-You need rubygem to install BeEF, do
+## Ruby Tools
+You need ruby, do
 ```
 pkg update && pkg install ruby -y
 ```
-Then clone this repo
+### BeEF
+Clone this repo
 ```
 git clone https://github.com/beefproject/beef.git
 ```
@@ -119,39 +146,21 @@ To run BeEF, do
 ```
 bash ./beef
 ```
-
-## Ngrok
-To install ngrok, you need to sign up at [ngrok]( https://ngrok.com/), then run this
-```
-cd
-git clone https://github.com/wakhidrf/Termux-Offsec.git
-cd Termux-Offsec/assets/
-tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
-```
-Then use your token
-```
-ngrok config add-authtoken <Your Token>
-```
-
-## Nuclei
-You need golang to install nuclei, do
+## Golang Tools
+You need golang, do
 ```
 pkg update && pkg install golang -y
 ```
-Then run this
+### Nuclei
+Run this
 ```
 cd
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 cd ../usr/bin/
 ln -s /data/data/com.termux/files/home/go/bin/nuclei
 ```
-
-## Mosint
-You need golang to install mosint, do
-```
-pkg update && pkg install golang -y
-```
-Then run this
+### Mosint
+Run this
 ```
 cd
 go install -v github.com/alpkeskin/mosint/v3/cmd/mosint@latest
@@ -163,28 +172,13 @@ cd Termux-Offsec/assets/
 cp .mosint.yaml /data/data/com.termux/files/home/.mosint.yaml
 ```
 To set API, follow [alpkeskin](https://github.com/alpkeskin/mosint) guide
-
-## Anubis-Netsec
-You need python to install anubis-netsec, do
-```
-pkg update && pkg install python -y
-```
-Then run this
-```
-cd
-pip install anubis-netsec
-git clone https://github.com/wakhidrf/Termux-Offsec.git
-cd ../usr/lib/python3.11/site-packages/dns/
-rm -rf resolver.py
-cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
-```
-
-## RetireJS
-You need npm to install RetireJS, do
+## Nodejs Tools
+You need nodejs, do
 ```
 pkg update && pkg install nodejs -y
 ```
-Then run this
+### RetireJS
+Run this
 ```
 cd
 npm install -g retire

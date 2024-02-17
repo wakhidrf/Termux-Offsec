@@ -1,20 +1,18 @@
 #! /bin/bash
 
+clear
 echo "================================================="
-echo "Installing Base Package"
+echo "Installing Base"
 echo "================================================="
 
 pkg upgrade -y && pkg update && pkg install tur-repo wget rust ruby perl golang nodejs php python -y
 
+clear
 echo "================================================="
-echo "Installing Net::SSLeay and lxml"
+echo "Installing Fix"
 echo "================================================="
 
 pkg upgrade -y && pkg update && pkg install perl-net-ssleay python-lxml -y
-
-echo "================================================="
-echo "Fixing Pycares"
-echo "================================================="
 
 cd
 wget https://files.pythonhosted.org/packages/01/50/e3015e6e03a3cf64113f509e8b86b71af37169b59ccedfcb182f3d031329/pycares-4.3.0.tar.gz
@@ -22,30 +20,40 @@ tar -xf pycares-4.3.0.tar.gz
 sed -i s/'#define HAVE_GETSERVBYPORT_R 1'//g ./pycares-4.3.0/deps/build-config/config_android/ares_config.h
 pip install ./pycares-4.3.0
 
+clear
 echo "=================================================="
-echo "Installing Nmap and Hydra"
+echo "Installing Repo Tools"
+echo "Nmap THC-hydra"
 echo "=================================================="
 
 pkg upgrade -y && pkg update && pkg install nmap thc-hydra -y
-
-echo "=================================================="
-echo "Adding vulscan to Nmap"
-echo "=================================================="
 
 cd
 git clone https://github.com/scipag/vulscan.git
 cd ../usr/share/nmap/scripts/
 ln -s /data/data/com.termux/files/home/vulscan/
 
+clear
 echo "=================================================="
-echo "Installing Metasploit"
+echo "Installing Community Tools"
+echo "Metasploit Ngrok Aircrack-NG"
 echo "=================================================="
 
 cd
 source <(curl -fsSL https://kutt.it/msf)
 
+cd
+cd Termux-Offsec/assets/
+tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
+
+cd
+cd Termux-Offsec/assets/aircrack-ng/
+bash setup.sh
+
+clear
 echo "=================================================="
-echo "Installing Nikto, theHarvester, and BeEF"
+echo "Installing Python Tools"
+echo "theHarvester Anubis-Netsec"
 echo "=================================================="
 
 cd
@@ -56,27 +64,39 @@ cd
 ln -s /data/data/com.termux/files/home/theHarvester/theHarvester.py
 
 cd
+pip install anubis-netsec
+cd ../usr/lib/python3.11/site-packages/dns/
+rm -rf resolver.py
+cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
+
+clear
+echo "=================================================="
+echo "Installing Perl Tools"
+echo "Nikto"
+echo "=================================================="
+
+cd
 git clone https://github.com/sullo/nikto.git
 cd
 ln -s /data/data/com.termux/files/home/nikto/program/nikto.pl
 cd Termux-Offsec/assets/
 cp nikto.conf.default ../../nikto/program/nikto.conf.default
 
+clear
+echo "=================================================="
+echo "Installing Ruby Tools"
+echo "BeEF"
+echo "=================================================="
+
 cd
 git clone https://github.com/beefproject/beef.git
 cd beef/
 bundle install
 
+clear
 echo "================================================="
-echo "Installing Ngrok"
-echo "================================================="
-
-cd
-cd Termux-Offsec/assets/
-tar -xvzf ngrok-v3-stable-linux-arm64.tgz -C /data/data/com.termux/files/usr/bin
-
-echo "================================================="
-echo "Installing Nuclei and Mosint"
+echo "Installing Golang Tools"
+echo "Nuclei Mosint"
 echo "================================================="
 
 cd
@@ -89,24 +109,17 @@ cd
 cd Termux-Offsec/assets/
 cp .mosint.yaml /data/data/com.termux/files/home/.mosint.yaml
 
+clear
 echo "=================================================="
-echo "Installing Anubis-Netsec"
-echo "=================================================="
-
-cd
-pip install anubis-netsec
-cd ../usr/lib/python3.11/site-packages/dns/
-rm -rf resolver.py
-cp /data/data/com.termux/files/home/Termux-Offsec/assets/resolver.py resolver.py
-
-echo "=================================================="
-echo "Installing RetireJS"
+echo "Installing Nodejs Tools"
+echo "RetireJS"
 echo "=================================================="
 
 cd
 npm install -g retire
 retire
 
+clear
 echo "=================================================="
 echo "OneScriptSetup Complete"
 echo "=================================================="
